@@ -6,6 +6,18 @@ A modern auction/giveaway application that lets end users browse gifts, add them
 
 ---
 
+## 📸 App Screenshots
+
+### User Experience
+| Gifts Catalog | Login Page |
+| :---: | :---: |
+| ![Gifts User](screenshots/gifts-user.png) | ![Login Page](screenshots/login%20page.png) |
+
+### Administrative Dashboard
+| Manage Gifts | Manage Purchases |
+| :---: | :---: |
+| ![Manage Gifts](screenshots/manage-gifts%20admin.png) | ![Manage Purchases](screenshots/manage-purchases%20admin.png) |
+
 ## 🚀 Key Features
 
 - For Users
