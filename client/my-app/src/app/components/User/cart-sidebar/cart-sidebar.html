@@ -1,0 +1,79 @@
+<div class="cart-sidebar" [class.open]="isOpen">
+  
+  <div class="cart-header">
+    <h3>🛒 My Gift Cart</h3>
+    <button class="close-btn" (click)="onClose()" aria-label="Close cart">×</button>
+  </div>
+
+  <div class="cart-body">
+    <div *ngIf="loading" class="loading-state">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
+
+    <div *ngIf="!loading && items.length === 0" class="empty-state">
+      <div class="empty-icon">🛒</div>
+      <p>Your cart is empty</p>
+      <small>Add some gifts to get started</small>
+    </div>
+
+    <div *ngIf="!loading && items.length > 0" class="items-list">
+      <div *ngFor="let item of items; trackBy: trackByGiftId" class="cart-item">
+        <div class="item-info">
+          <span class="name">{{ item.giftName }}</span>
+          <span class="unit-price">{{ item.price }}₪ × {{ item.quantity }}</span>
+          <span class="total-price">{{ item.totalPrice }}₪</span>
+        </div>
+
+        <div class="item-controls">
+          <div class="quantity-picker">
+            <button 
+              (click)="updateQuantity(item, -1)"
+              [disabled]="loading"
+              aria-label="Decrease quantity">
+              -
+            </button>
+            <span class="quantity">{{ item.quantity }}</span>
+            <button 
+              (click)="updateQuantity(item, 1)"
+              [disabled]="loading"
+              aria-label="Increase quantity">
+              +
+            </button>
+          </div>
+          
+          <button 
+            class="delete-btn" 
+            (click)="removeItem(item.giftId)" 
+            [disabled]="loading"
+            title="Remove from cart"
+            aria-label="Remove from cart">
+            🗑️
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-footer" *ngIf="!loading && items.length > 0">
+    <div class="summary">
+      <div class="summary-row">
+        <span>Items Count:</span>
+        <span>{{ totalItems }}</span>
+      </div>
+      <div class="summary-row total-row">
+        <span>Total Amount:</span>
+        <span class="total-amount">{{ total }}₪</span>
+      </div>
+    </div>
+    
+    <button 
+      class="checkout-btn" 
+      (click)="onCheckout()"
+      [disabled]="loading">
+      Proceed to Checkout
+    </button>
+  </div>
+</div>
+
+<div class="cart-overlay" *ngIf="isOpen" (click)="onClose()"></div>

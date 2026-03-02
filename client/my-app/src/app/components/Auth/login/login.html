@@ -1,0 +1,43 @@
+<div class="login-screen">
+  <div class="login-box">
+    <div class="brand-section">
+      <img src="images/LOGO2.jpg" alt="Logo" class="hero-logo">
+      <h1>Welcome Back</h1>
+      <p>Sign in to your account</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-content">
+      <p-toast position="top-center"></p-toast>
+
+      <div class="input-field">
+        <label>Email</label>
+        <div class="input-inner">
+          <i class="pi pi-envelope"></i>
+          <input pInputText type="email" formControlName="email" class="clean-input">
+        </div>
+        <div class="error-zone">
+          <span *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">Invalid email address</span>
+        </div>
+      </div>
+
+      <div class="input-field">
+        <label>Password</label>
+        <div class="input-inner">
+          <i class="pi pi-lock"></i>
+          <p-password formControlName="passwordHash" [toggleMask]="true" [feedback]="false"
+                      styleClass="w-full" inputStyleClass="clean-input">
+          </p-password>
+        </div>
+        <div class="error-zone">
+          <span *ngIf="loginForm.get('passwordHash')?.touched && loginForm.get('passwordHash')?.invalid">6-15 characters required</span>
+        </div>
+      </div>
+
+      <button pButton type="submit" label="Sign In" class="action-btn"></button>
+
+      <div class="bottom-link">
+        New here? <a (click)="goToRegister()">Create account</a>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+$yellow: #FFD200
+$bg-yellow-light: #FFFDE7
+$text-main: #1d1d1f
+$border-color: #e0e0e0
+
+.login-screen
+  display: flex
+  justify-content: center
+  align-items: center
+  min-height: 100vh
+  background-color: $bg-yellow-light
+  font-family: -apple-system, system-ui, sans-serif
+  padding: 20px 0 // צמצום פדינג חיצוני
+
+.login-box
+  width: 100%
+  max-width: 420px // הקטנה קלה של הרוחב לאיזון
+  padding: 25px 35px // צמצום פדינג פנימי (במקום 40px)
+  text-align: center
+  background: #ffffff
+  border: 1px solid $border-color
+  border-radius: 20px
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05)
+
+.hero-logo
+  width: 80px // לוגו קטן יותר לחיסכון במקום
+  margin-bottom: 12px
+  object-fit: contain
+
+.brand-section
+  margin-bottom: 20px // פחות מרווח מתחת לכותרת
+  h1
+    font-size: 24px // כותרת מעט קטנה יותר
+    color: $text-main
+    margin: 0
+  p
+    color: #86868b
+    font-size: 14px
+    margin-top: 4px
+
+.form-content
+  text-align: left
+
+.input-field
+  margin-bottom: 8px // צמצום משמעותי במרווח בין שדה לשדה
+  label
+    font-size: 13px // פונט תווית קטן יותר
+    font-weight: 600
+    margin-bottom: 4px
+    display: block
+    color: #555
+
+.input-inner
+  position: relative
+  display: flex
+  align-items: center
+  i
+    position: absolute
+    left: 14px
+    color: #999
+    font-size: 14px
+    z-index: 10
+
+::ng-deep
+  .clean-input, .p-password input, .p-inputmask input
+    width: 100% !important
+    height: 44px !important // אינפוטים נמוכים יותר (במקום 50px)
+    padding-left: 38px !important
+    background: #fdfdfd !important
+    border: 1px solid #d2d2d7 !important
+    border-radius: 8px !important
+    font-size: 14px !important
+    
+  .p-password, .p-inputmask
+    width: 100%
+
+.error-zone
+  height: 16px // צמצום גובה אזור השגיאה
+  margin-bottom: 2px
+  span
+    color: #d70015
+    font-size: 11px
+    display: block
+
+.action-btn
+  width: 100%
+  height: 46px !important // כפתור מעט נמוך יותר
+  background: $yellow !important
+  border: none !important
+  color: #000 !important
+  border-radius: 8px !important
+  font-weight: 700 !important
+  margin-top: 10px
+  cursor: pointer
+
+.bottom-link
+  margin-top: 18px // צמצום מרווח תחתון
+  text-align: center
+  font-size: 13px
+  color: #666
+  a
+    color: #0066cc
+    font-weight: 600
+    cursor: pointer

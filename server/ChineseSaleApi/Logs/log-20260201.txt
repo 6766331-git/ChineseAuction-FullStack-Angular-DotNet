@@ -1,0 +1,10 @@
+2026-02-01 01:22:07.622 +02:00 [INF] Starting Store API application {}
+2026-02-01 01:22:09.049 +02:00 [INF] Store API is now running {}
+2026-02-01 01:29:00.096 +02:00 [INF] Starting Store API application {}
+2026-02-01 01:29:01.100 +02:00 [INF] Store API is now running {}
+2026-02-01 01:51:43.989 +02:00 [INF] Starting Store API application {}
+2026-02-01 01:51:44.785 +02:00 [INF] Store API is now running {}
+2026-02-01 02:02:35.855 +02:00 [INF] Starting Store API application {}
+2026-02-01 02:02:36.335 +02:00 [INF] Store API is now running {}
+2026-02-01 16:42:37.602 +02:00 [INF] Starting Store API application {}
+2026-02-01 16:42:38.670 +02:00 [INF] Store API is now running {}

@@ -1,0 +1,280 @@
+// 1. VARIABLES
+$primary-color: #f1c40f
+$primary-dark: #d4ac0d
+$bg-color: #f9f9f9
+$card-bg: #ffffff
+$text-dark: #2c3e50
+$text-light: #7f8c8d
+$border-color: #ececec
+$shadow: 0 4px 15px rgba(0,0,0,0.05)
+$modal-overlay: rgba(0,0,0,0.4)
+$success: #27ae60
+$error: #e74c3c
+
+// 2. GENERAL
+body
+  background-color: $bg-color
+  font-family: 'Segoe UI', sans-serif
+  margin: 0
+  direction: rtl
+
+.page-wrapper
+  max-width: 1100px
+  margin: 0 auto
+  padding: 40px 20px
+
+.page-header
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 30px
+  h1
+    margin: 0
+    font-size: 28px
+    color: $text-dark
+  p
+    margin: 5px 0 0
+    color: $text-light
+
+// 3. COMPONENTS
+.card
+  background: $card-bg
+  border-radius: 12px
+  box-shadow: $shadow
+  padding: 25px
+  margin-bottom: 25px
+  border: 1px solid $border-color
+
+.primary-btn
+  background: linear-gradient(135deg, $primary-color, $primary-dark)
+  color: #fff
+  border: none
+  padding: 10px 20px
+  border-radius: 8px
+  font-weight: 600
+  cursor: pointer
+  transition: 0.2s
+  &:disabled
+    opacity: 0.6
+    cursor: not-allowed
+  &:hover:not(:disabled)
+    transform: translateY(-2px)
+    box-shadow: 0 4px 12px rgba(241, 196, 15, 0.3)
+
+.secondary-btn
+  background: #fff
+  border: 1px solid #ddd
+  padding: 10px 20px
+  border-radius: 8px
+  cursor: pointer
+
+.filter-form
+  display: flex
+  gap: 15px
+  align-items: flex-end
+  .input-group
+    flex: 1
+    display: flex
+    flex-direction: column
+    gap: 5px
+    label
+      font-size: 0.85rem
+      color: $text-light
+    // עדכון: הוספת select ועיצוב אחיד
+    input, select
+      padding: 10px
+      border: 1px solid #ddd
+      border-radius: 8px
+      font-family: inherit
+      background-color: #fff
+      height: 41px 
+      outline: none
+      &:focus
+        border-color: $primary-color
+
+// 4. TABLE
+table
+  width: 100%
+  border-collapse: collapse
+  th
+    text-align: right
+    padding: 15px
+    color: $text-light
+    border-bottom: 2px solid $border-color
+  td
+    padding: 15px
+    border-bottom: 1px solid $border-color
+
+.text-right
+  text-align: left
+
+.action-buttons
+  display: flex
+  gap: 8px
+
+.icon-btn
+  background: none
+  border: none
+  font-size: 1.1rem
+  cursor: pointer
+  padding: 6px
+  border-radius: 6px
+  transition: 0.2s
+  &:hover
+    background: #f0f0f0
+
+// 5. MODAL
+.modal-overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: $modal-overlay
+  backdrop-filter: blur(3px)
+  z-index: 2000
+  display: flex
+  align-items: center
+  justify-content: center
+
+.modal-content
+  background: white
+  width: 100%
+  max-width: 450px
+  border-radius: 12px
+  animation: slideUp 0.3s ease-out
+  .modal-header
+    padding: 20px
+    background: #fffbf0
+    display: flex
+    justify-content: space-between
+    border-bottom: 1px solid $border-color
+  .modal-body
+    padding: 20px
+    .form-group
+      margin-bottom: 15px
+      display: flex
+      flex-direction: column
+      gap: 5px
+      input
+        padding: 10px
+        border: 1px solid #ddd
+        border-radius: 6px
+        &.invalid
+          border-color: $error
+  .modal-footer
+    padding: 15px
+    display: flex
+    justify-content: flex-end
+    gap: 10px
+
+// 6. DRAWER
+.drawer-overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: $modal-overlay
+  z-index: 2100
+  display: none
+  &.open
+    display: block
+
+.drawer
+  position: fixed
+  top: 0
+  left: 0
+  bottom: 0
+  width: 380px
+  background: white
+  z-index: 2500
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)
+  transform: translateX(-100%)
+  display: flex
+  flex-direction: column
+  box-shadow: 5px 0 15px rgba(0,0,0,0.1)
+  &.open
+    transform: translateX(0)
+
+.drawer-header
+  padding: 20px
+  background: $primary-color
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.drawer-body
+  flex: 1
+  overflow-y: auto
+  padding: 15px
+
+.gift-card
+  display: flex
+  gap: 12px
+  padding: 10px
+  border: 1px solid #eee
+  border-radius: 10px
+  margin-bottom: 12px
+  .gift-image
+    width: 70px
+    height: 70px
+    flex-shrink: 0
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+      border-radius: 6px
+  .gift-details
+    flex: 1
+    h4
+      margin: 0
+      font-size: 0.95rem
+    .desc
+      font-size: 0.8rem
+      color: $text-light
+      margin: 4px 0
+    .price
+      color: $primary-dark
+      font-weight: bold
+
+// 8. ANIMATIONS & HELPERS
+.loading-container
+  text-align: center
+  padding: 40px
+.spinner
+  width: 30px
+  height: 30px
+  border: 3px solid #f3f3f3
+  border-top: 3px solid $primary-color
+  border-radius: 50%
+  animation: spin 1s linear infinite
+  margin: 0 auto 10px
+
+@keyframes spin
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)
+
+@keyframes slideUp
+  from
+    opacity: 0
+    transform: translateY(20px)
+  to
+    opacity: 1
+    transform: translateY(0)
+
+.close-btn
+  background: none
+  border: none
+  font-size: 1.2rem
+  cursor: pointer
+
+// --- PrimeNG Toast Fix ---
+:host ::ng-deep .p-toast
+  z-index: 9999 !important
+
+:host ::ng-deep .p-toast-top-right
+  right: 20px
+  top: 20px

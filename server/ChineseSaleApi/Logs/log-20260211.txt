@@ -1,0 +1,56 @@
+2026-02-11 10:19:39.319 +02:00 [INF] Starting Store API application {}
+2026-02-11 10:19:39.868 +02:00 [INF] Store API is now running {}
+2026-02-11 10:40:05.134 +02:00 [INF] Starting Store API application {}
+2026-02-11 10:40:05.438 +02:00 [INF] Store API is now running {}
+2026-02-11 10:43:09.635 +02:00 [INF] Starting Store API application {}
+2026-02-11 10:43:09.919 +02:00 [INF] Store API is now running {}
+2026-02-11 10:48:21.648 +02:00 [INF] Starting Store API application {}
+2026-02-11 10:48:22.140 +02:00 [INF] Store API is now running {}
+2026-02-11 10:49:26.166 +02:00 [INF] Starting Store API application {}
+2026-02-11 10:49:26.602 +02:00 [INF] Store API is now running {}
+2026-02-11 10:53:57.458 +02:00 [INF] Starting Store API application {}
+2026-02-11 10:53:57.719 +02:00 [INF] Store API is now running {}
+2026-02-11 10:55:38.555 +02:00 [INF] Starting Store API application {}
+2026-02-11 10:55:38.852 +02:00 [INF] Store API is now running {}
+2026-02-11 10:58:36.092 +02:00 [INF] Starting Store API application {}
+2026-02-11 10:58:36.392 +02:00 [INF] Store API is now running {}
+2026-02-11 11:02:46.174 +02:00 [INF] Starting Store API application {}
+2026-02-11 11:02:46.494 +02:00 [INF] Store API is now running {}
+2026-02-11 11:05:42.933 +02:00 [INF] Starting Store API application {}
+2026-02-11 11:05:43.218 +02:00 [INF] Store API is now running {}
+2026-02-11 11:17:58.753 +02:00 [INF] Starting Store API application {}
+2026-02-11 11:17:59.037 +02:00 [INF] Store API is now running {}
+2026-02-11 11:20:04.944 +02:00 [INF] Starting Store API application {}
+2026-02-11 11:20:05.236 +02:00 [INF] Store API is now running {}
+2026-02-11 11:21:47.137 +02:00 [INF] Starting Store API application {}
+2026-02-11 11:21:47.437 +02:00 [INF] Store API is now running {}
+2026-02-11 11:23:27.804 +02:00 [INF] Starting Store API application {}
+2026-02-11 11:23:28.004 +02:00 [FTL] Application start-up failed {}
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\user1\Desktop\ProjectAngularApi\server\ChineseSaleApi\Program.cs:line 168
+2026-02-11 11:24:01.986 +02:00 [INF] Starting Store API application {}
+2026-02-11 11:24:02.203 +02:00 [FTL] Application start-up failed {}
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\user1\Desktop\ProjectAngularApi\server\ChineseSaleApi\Program.cs:line 168
+2026-02-11 11:24:13.285 +02:00 [INF] Starting Store API application {}
+2026-02-11 11:24:13.657 +02:00 [INF] Store API is now running {}
+2026-02-11 13:18:08.883 +02:00 [INF] Starting Store API application {}
+2026-02-11 13:18:09.226 +02:00 [INF] Store API is now running {}
+2026-02-11 13:25:35.273 +02:00 [INF] Starting Store API application {}
+2026-02-11 13:25:35.593 +02:00 [INF] Store API is now running {}
+2026-02-11 21:55:18.969 +02:00 [INF] Starting Store API application {}
+2026-02-11 21:55:19.406 +02:00 [INF] Store API is now running {}

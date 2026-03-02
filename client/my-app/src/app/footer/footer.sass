@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap')
+
+$bg-luxury-black: #1a1a1a
+$gold-accent: #d4af37
+$text-light: #f4f4f4
+
+.mini-footer
+  position: fixed
+  bottom: 0
+  left: 0
+  width: 100%
+  background-color: $bg-luxury-black
+  border-top: 1.5px solid $gold-accent // קו מעט עדין יותר שיתאים לצפיפות
+  padding: 8px 0
+  font-family: 'Montserrat', sans-serif
+  z-index: 1000
+
+  .footer-container
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+
+    .footer-text
+      margin: 0
+      font-size: 0.82rem // גודל קומפקטי
+      color: rgba(244, 244, 244, 0.75)
+      font-weight: 400
+      letter-spacing: -0.2px // צפיפות אותיות (שלילי גורם להן להתקרב)
+      word-spacing: 1px // צמצום קל של הרווח בין המילים
+
+      strong
+        color: $gold-accent
+        font-weight: 700
+      
+      .divider
+        margin: 0 8px // רווח צפוף יותר סביב הקווים המפרידים
+        color: $gold-accent
+        opacity: 0.6
+      
+      span
+        font-weight: 500
+        color: $text-light

@@ -1,0 +1,65 @@
+<div class="login-screen">
+  <div class="login-box">
+    <div class="brand-section">
+      <img src="images/LOGO2.jpg" alt="Logo" class="hero-logo">
+      <h1>Create Account</h1>
+      <p>Join us and start your journey</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-content">
+      <p-toast position="top-center"></p-toast>
+
+      <div class="input-field">
+        <label>Full Name</label>
+        <div class="input-inner">
+          <i class="pi pi-user"></i>
+          <input pInputText formControlName="name" placeholder="Enter your name" class="clean-input">
+        </div>
+        <div class="error-zone">
+          <span *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">Name is required</span>
+        </div>
+      </div>
+
+      <div class="input-field">
+        <label>Email</label>
+        <div class="input-inner">
+          <i class="pi pi-envelope"></i>
+          <input pInputText type="email" formControlName="email" placeholder="example@mail.com" class="clean-input">
+        </div>
+        <div class="error-zone">
+          <span *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">Invalid email address</span>
+        </div>
+      </div>
+
+      <div class="input-field">
+        <label>Password</label>
+        <div class="input-inner">
+          <i class="pi pi-lock"></i>
+          <p-password formControlName="passwordHash" [toggleMask]="true" [feedback]="false"
+                      placeholder="6-15 characters" styleClass="w-full" inputStyleClass="clean-input">
+          </p-password>
+        </div>
+        <div class="error-zone">
+          <span *ngIf="registerForm.get('passwordHash')?.touched && registerForm.get('passwordHash')?.invalid">6-15 characters required</span>
+        </div>
+      </div>
+
+      <div class="input-field">
+        <label>Phone Number</label>
+        <div class="input-inner">
+          <i class="pi pi-phone"></i>
+          <p-inputmask mask="059-9999999" formControlName="phone" placeholder="05X-XXXXXXX" styleClass="w-full" class="w-full"></p-inputmask>
+        </div>
+        <div class="error-zone">
+          <span *ngIf="registerForm.get('phone')?.touched && registerForm.get('phone')?.invalid">Valid Israeli phone required</span>
+        </div>
+      </div>
+
+      <button pButton type="submit" label="Sign Up" [disabled]="registerForm.invalid" class="action-btn"></button>
+
+      <div class="bottom-link">
+        Already have an account? <a (click)="goToLogin()">Login here</a>
+      </div>
+    </form>
+  </div>
+</div>

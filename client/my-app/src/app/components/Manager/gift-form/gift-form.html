@@ -1,0 +1,135 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="w-full">
+
+  <div class="p-4 md:p-5 rounded-2xl shadow-sm border surface-card">
+    <div class="mb-4">
+      <div class="text-xl font-semibold">Gift Details</div>
+      <div class="text-m text-color-secondary mt-1">
+        Please fill in the details. Required fields are marked.
+      </div>
+    </div>
+
+    <div class="grid gap-4">
+
+      <!-- Name -->
+      <div class="flex flex-col gap-2">
+        <label for="name" class="font-medium">
+          Gift Name 
+        </label>
+
+        <input
+          id="name"
+          pInputText
+          formControlName="name"
+          class="w-full"
+          [class.ng-invalid]="form.controls['name'].invalid && (form.controls['name'].touched || form.controls['name'].dirty)"
+        />
+
+        @if (form.controls['name'].invalid && (form.controls['name'].touched || form.controls['name'].dirty)) {
+          <small class="text-red-500">
+            Gift name is required
+          </small>
+        }
+      </div>
+
+      <!-- Ticket Cost -->
+      <div class="flex flex-col gap-2">
+        <label for="ticketCost" class="font-medium">
+          Ticket Cost 
+        </label>
+
+        <input
+          id="ticketCost"
+          pInputText
+          type="number"
+          min="1"
+          formControlName="ticketCost"
+          class="w-full"
+          [class.ng-invalid]="form.controls['ticketCost'].invalid && (form.controls['ticketCost'].touched || form.controls['ticketCost'].dirty)"
+        />
+
+        @if (form.controls['ticketCost'].invalid && (form.controls['ticketCost'].touched || form.controls['ticketCost'].dirty)) {
+          <small class="text-red-500">
+            Must be a number greater than 0
+          </small>
+        }
+      </div>
+
+      <!-- Description -->
+      <div class="flex flex-col gap-2">
+        <label for="description" class="font-medium">Description</label>
+
+        <input
+          id="description"
+          pInputText
+          formControlName="description"
+          class="w-full"
+        />
+      </div>
+
+      <!-- Donor + Category -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <!-- Donor -->
+        <div class="flex flex-col gap-2">
+          <label class="font-medium">
+            Donor 
+          </label>
+
+          <p-select
+            formControlName="donorId"
+            [options]="(donors$ | async) ?? []"
+            optionLabel="name"
+            optionValue="id"
+            placeholder="Select donor">
+          </p-select>
+
+
+          @if (form.controls['donorId'].invalid && (form.controls['donorId'].touched || form.controls['donorId'].dirty)) {
+            <small class="text-red-500">
+              Donor selection is required
+            </small>
+          }
+        </div>
+
+        <!-- Category -->
+        <div class="flex flex-col gap-2">
+          <label class="font-medium">
+            Category 
+          </label>
+
+          <p-select
+            formControlName="categoryId"
+            [options]="(categories$ | async) ?? []"
+            optionLabel="name"
+            optionValue="id"
+            placeholder="Select category">
+          </p-select>
+
+          @if (form.controls['categoryId'].invalid && (form.controls['categoryId'].touched || form.controls['categoryId'].dirty)) {
+            <small class="text-red-500">
+              Category selection is required
+            </small>
+          }
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Actions -->
+    <div class="flex justify-end gap-2 mt-6 pt-4 border-top-1 surface-border">
+      <button pButton type="button"
+              label="Cancel"
+              severity="secondary"
+              (click)="close.emit()">
+      </button>
+
+      <button pButton type="submit"
+              label="Save"
+              icon="pi pi-check"
+              [disabled]="form.invalid">
+      </button>
+    </div>
+  </div>
+
+</form>

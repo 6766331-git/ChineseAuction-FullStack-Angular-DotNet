@@ -1,0 +1,87 @@
+<div class="page-container" dir="ltr">
+  <header class="header">
+    <h1>🎁 Gift Catalog</h1>
+    
+    <div class="action-bar">
+      <button class="action-btn" (click)="sortByPrice()" [disabled]="loading || isSorting">
+        <span>Sort by Price</span> 📊
+      </button>
+      <button class="action-btn" (click)="sortByCategory()" [disabled]="loading || isSorting">
+        <span>Sort by Category</span> 📂
+      </button>
+    </div>
+  </header>
+
+  <div *ngIf="loading" class="loader-container">
+    <div class="spinner"></div>
+    <p>Loading catalog...</p>
+  </div>
+
+  <div class="cards-container" *ngIf="!loading" [class.sorting-overlay]="isSorting">
+    
+    <div class="sort-indicator" *ngIf="isSorting">
+      Updating list...
+    </div>
+
+    <div class="gift-card" 
+         *ngFor="let gift of gifts; trackBy: trackByGiftId" 
+         [class.has-winner]="gift.winnerUser">
+      
+      <div class="image-wrapper">
+        <div class="category-badge" *ngIf="gift.category">
+          {{ gift.category }}
+        </div>
+        
+        <img 
+          [src]="gift.pictureUrl ? 'http://localhost:5000/' + gift.pictureUrl : 'assets/placeholder.png'"
+          [alt]="gift.name"
+          loading="lazy">
+        
+        <div class="winner-overlay" *ngIf="gift.winnerUser">
+          <div class="winner-badge">
+            <span class="trophy">🏆</span>
+            <span class="winner-name">{{ gift.winnerUser }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-content">
+        <div class="card-header-row">
+          <h3 class="gift-title">{{ gift.name }}</h3>
+          <span class="price-tag">${{ gift.ticketCost }}</span>
+        </div>
+        
+        <p class="description">{{ gift.description || 'No description available' }}</p>
+        
+        <div class="donor-info" *ngIf="gift.donorName">
+          <span class="donor-label">Donated by:</span>
+          <span class="donor-name">✨ {{ gift.donorName }}</span>
+        </div>
+        
+        <button 
+          class="add-cart-btn" 
+          [disabled]="!!gift.winnerUser || isSorting" 
+          (click)="addToCart(gift.id)">
+          {{ gift.winnerUser ? 'Winner Picked' : '🛒 Add to Cart' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="empty-state" *ngIf="!loading && gifts.length === 0">
+    <p>No gifts available at the moment</p>
+  </div>
+
+  <button 
+    class="floating-cart" 
+    (click)="toggleCart()"
+    [class.has-items]="cartItemCount > 0">
+    <span>🛒</span>
+    <span class="cart-badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
+  </button>
+
+  <app-cart-sidebar 
+    [isOpen]="isCartOpen" 
+    (close)="closeCart()">
+  </app-cart-sidebar>
+</div>

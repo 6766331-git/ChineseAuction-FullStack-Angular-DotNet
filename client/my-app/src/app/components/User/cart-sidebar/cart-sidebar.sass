@@ -1,0 +1,112 @@
+$charcoal: #2d3436
+$muted-text: #57606f
+$main-yellow: #ffd43b
+$border-light: #f1f2f6
+
+.cart-sidebar
+  position: fixed
+  top: 0
+  left: 0
+  width: 400px
+  height: 100%
+  background: white
+  z-index: 2000
+  transform: translateX(-100%)
+  transition: transform 0.3s ease-in-out
+  box-shadow: 10px 0 30px rgba(0,0,0,0.1)
+  display: flex
+  flex-direction: column
+  &.open
+    transform: translateX(0)
+
+.cart-overlay
+  position: fixed
+  inset: 0
+  background: rgba(0,0,0,0.4)
+  z-index: 1999
+  backdrop-filter: blur(2px)
+
+.cart-header
+  padding: 25px
+  border-bottom: 1px solid $border-light
+  display: flex
+  justify-content: space-between
+  align-items: center
+  h3
+    margin: 0
+    font-size: 1.5rem
+  .close-btn
+    background: none
+    border: none
+    font-size: 2rem
+    cursor: pointer
+
+.cart-body
+  flex: 1
+  overflow-y: auto
+  padding: 20px
+
+  .cart-item
+    display: flex
+    justify-content: space-between
+    padding: 15px 0
+    border-bottom: 1px solid $border-light
+    .item-info
+      display: flex
+      flex-direction: column
+      .name
+        font-weight: 700
+      .unit-price
+        font-size: 0.85rem
+        color: $muted-text
+      .total-price
+        font-weight: 800
+        color: #e67e22
+
+.item-controls
+  display: flex
+  align-items: center
+  gap: 12px
+  .quantity-picker
+    display: flex
+    align-items: center
+    background: #f1f2f6
+    border-radius: 6px
+    button
+      border: none
+      background: none
+      padding: 5px 10px
+      cursor: pointer
+    .quantity
+      font-weight: bold
+  .delete-btn
+    background: none
+    border: none
+    cursor: pointer
+    font-size: 1.2rem
+
+.cart-footer
+  padding: 25px
+  background: #f9f9f9
+  border-top: 1px solid $border-light
+  .summary-row
+    display: flex
+    justify-content: space-between
+    margin-bottom: 10px
+    &.total-row
+      border-top: 2px dashed #ddd
+      padding-top: 15px
+      font-weight: 900
+      font-size: 1.3rem
+  .checkout-btn
+    width: 100%
+    padding: 16px
+    background: $main-yellow
+    border: none
+    border-radius: 10px
+    font-weight: 800
+    font-size: 1rem
+    cursor: pointer
+    margin-top: 15px
+    &:hover
+      background: darken($main-yellow, 5%)

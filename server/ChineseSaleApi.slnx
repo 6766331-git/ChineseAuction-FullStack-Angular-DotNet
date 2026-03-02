@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ChineseSaleApi.Tests/ChineseSaleApi.Tests.csproj" />
+  <Project Path="ChineseSaleApi/ChineseSaleApi.csproj" />
+</Solution>

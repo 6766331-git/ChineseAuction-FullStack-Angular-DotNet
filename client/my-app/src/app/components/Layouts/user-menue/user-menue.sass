@@ -1,0 +1,136 @@
+// --- משתנים ---
+$lemon: #fff200
+$dark: #2d3436
+$white: #ffffff
+$danger: #ff4757
+$light-gray: #f8f9fa
+$border-color: #eeeeee
+
+// --- תפריט ניהול ראשי ---
+.manager-header
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 0 2rem
+  height: 80px
+  background: $white
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05)
+  position: sticky
+  top: 0
+  z-index: 1000
+  overflow: hidden
+
+  // לוגו
+  .logo-container
+    display: flex
+    align-items: center
+    gap: 12px
+    cursor: pointer
+    height: 100%
+    
+    .logo-img
+      height: 55px
+      width: auto
+      object-fit: contain
+      transition: transform 0.3s ease
+      &:hover
+        transform: scale(1.05)
+
+    .logo-text
+      font-size: 1.3rem
+      font-weight: 800
+      color: $dark
+
+  // תפריט ניווט מרכזי
+  .menu
+    display: flex
+    list-style: none
+    gap: 10px
+    margin: 0
+
+    li
+      font-weight: 700
+      padding: 10px 20px
+      border-radius: 10px
+      cursor: pointer
+      transition: all 0.2s ease
+      color: $dark
+      
+      &:hover
+        background: rgba($lemon, 0.2)
+        color: darken($dark, 10%)
+
+      &.active
+        background: $lemon
+        box-shadow: 0 2px 8px rgba($lemon, 0.4)
+
+  // אזור הפעולות בצד ימין
+  .header-actions
+    display: flex
+    align-items: center
+    gap: 1.5rem
+
+    // עגלת קניות
+    .cart-toggle-btn
+      background: none
+      border: none
+      cursor: pointer
+      font-size: 1.6rem
+      transition: all 0.2s ease
+      display: flex
+      align-items: center
+      &:hover
+        transform: scale(1.1) rotate(-8deg)
+
+    // קבוצת כפתורי התחברות והרשמה "המגניבים"
+    .auth-group
+      display: flex
+      gap: 5px
+      background: $light-gray
+      padding: 5px
+      border-radius: 14px
+      border: 1px solid $border-color
+
+      .auth-btn
+        padding: 9px 22px
+        border-radius: 10px
+        font-weight: 700
+        font-size: 0.9rem
+        cursor: pointer
+        border: none
+        transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+        
+        &.login
+          background: transparent
+          color: $dark
+          &:hover
+            background: white
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05)
+
+        &.register
+          background: $lemon
+          color: $dark
+          box-shadow: 0 3px 0px darken($lemon, 15%)
+          &:hover
+            background: lighten($lemon, 5%)
+            transform: translateY(-2px)
+            box-shadow: 0 5px 0px darken($lemon, 20%)
+          &:active
+            transform: translateY(1px)
+            box-shadow: 0 1px 0px darken($lemon, 15%)
+
+    // כפתור התנתקות
+    .logout-btn
+      background: #f1f1f1
+      border: 1px solid #ddd
+      color: $dark
+      padding: 9px 18px
+      border-radius: 10px
+      font-weight: 600
+      cursor: pointer
+      transition: all 0.2s ease
+      &:hover
+        background: $danger
+        color: white
+        border-color: $danger
+        transform: translateY(-1px)

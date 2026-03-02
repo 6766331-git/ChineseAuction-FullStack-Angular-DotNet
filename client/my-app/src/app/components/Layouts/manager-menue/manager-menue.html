@@ -1,0 +1,22 @@
+<header class="manager-header">
+  <div class="logo-container" (click)="navigate('/admin/dashboard')">
+    <img src="images/LOGO2.jpg" alt="Admin Logo" class="logo-img">
+    <span class="logo-text">Admin Panel</span>
+  </div>
+
+  <ul class="menu">
+    <li *ngFor="let item of menuItems"
+        (click)="navigate(item.path)"
+        [class.active]="isActive(item.path)">
+      {{ item.label }}
+    </li>
+  </ul>
+
+  <div class="header-actions">
+    <button class="logout-btn" (click)="logout()">
+      Logout
+    </button>
+  </div>
+</header>
+
+<router-outlet></router-outlet>

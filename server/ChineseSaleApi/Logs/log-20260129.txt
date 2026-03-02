@@ -1,0 +1,48 @@
+2026-01-29 14:15:51.196 +02:00 [INF] Starting Store API application {}
+2026-01-29 14:15:52.065 +02:00 [INF] Store API is now running {}
+2026-01-29 22:09:59.181 +02:00 [INF] Starting Store API application {}
+2026-01-29 22:10:00.663 +02:00 [INF] Store API is now running {}
+2026-01-29 22:10:36.339 +02:00 [INF] Starting Store API application {}
+2026-01-29 22:10:37.016 +02:00 [INF] Store API is now running {}
+2026-01-29 22:10:59.541 +02:00 [INF] Starting Store API application {}
+2026-01-29 22:11:00.153 +02:00 [INF] Store API is now running {}
+2026-01-29 22:14:04.134 +02:00 [INF] Starting Store API application {}
+2026-01-29 22:14:04.687 +02:00 [INF] Store API is now running {}
+2026-01-29 22:15:59.503 +02:00 [INF] Starting Store API application {}
+2026-01-29 22:16:00.003 +02:00 [FTL] Application start-up failed {}
+System.InvalidOperationException: The service collection cannot be modified because it is read-only.
+   at Microsoft.Extensions.DependencyInjection.ServiceCollection.ThrowReadOnlyException()
+   at Microsoft.Extensions.DependencyInjection.ServiceCollection.CheckReadOnly()
+   at Microsoft.Extensions.DependencyInjection.ServiceCollection.System.Collections.Generic.ICollection<Microsoft.Extensions.DependencyInjection.ServiceDescriptor>.Add(ServiceDescriptor item)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(IServiceCollection services, Type serviceType, Object implementationInstance)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton[TService](IServiceCollection services, TService implementationInstance)
+   at Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure[TOptions](IServiceCollection services, String name, Action`1 configureOptions)
+   at Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure[TOptions](IServiceCollection services, Action`1 configureOptions)
+   at Microsoft.Extensions.DependencyInjection.CorsServiceCollectionExtensions.AddCors(IServiceCollection services, Action`1 setupAction)
+   at Program.<Main>$(String[] args) in D:\ProjectAngularApi\server\ChineseSaleApi\Program.cs:line 160
+2026-01-29 22:16:08.175 +02:00 [INF] Starting Store API application {}
+2026-01-29 22:16:08.699 +02:00 [FTL] Application start-up failed {}
+System.InvalidOperationException: The service collection cannot be modified because it is read-only.
+   at Microsoft.Extensions.DependencyInjection.ServiceCollection.ThrowReadOnlyException()
+   at Microsoft.Extensions.DependencyInjection.ServiceCollection.CheckReadOnly()
+   at Microsoft.Extensions.DependencyInjection.ServiceCollection.System.Collections.Generic.ICollection<Microsoft.Extensions.DependencyInjection.ServiceDescriptor>.Add(ServiceDescriptor item)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(IServiceCollection services, Type serviceType, Object implementationInstance)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton[TService](IServiceCollection services, TService implementationInstance)
+   at Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure[TOptions](IServiceCollection services, String name, Action`1 configureOptions)
+   at Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure[TOptions](IServiceCollection services, Action`1 configureOptions)
+   at Microsoft.Extensions.DependencyInjection.CorsServiceCollectionExtensions.AddCors(IServiceCollection services, Action`1 setupAction)
+   at Program.<Main>$(String[] args) in D:\ProjectAngularApi\server\ChineseSaleApi\Program.cs:line 160
+2026-01-29 22:16:35.776 +02:00 [INF] Starting Store API application {}
+2026-01-29 22:16:36.271 +02:00 [FTL] Application start-up failed {}
+System.InvalidOperationException: The service collection cannot be modified because it is read-only.
+   at Microsoft.Extensions.DependencyInjection.ServiceCollection.ThrowReadOnlyException()
+   at Microsoft.Extensions.DependencyInjection.ServiceCollection.CheckReadOnly()
+   at Microsoft.Extensions.DependencyInjection.ServiceCollection.System.Collections.Generic.ICollection<Microsoft.Extensions.DependencyInjection.ServiceDescriptor>.Add(ServiceDescriptor item)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(IServiceCollection services, Type serviceType, Object implementationInstance)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton[TService](IServiceCollection services, TService implementationInstance)
+   at Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure[TOptions](IServiceCollection services, String name, Action`1 configureOptions)
+   at Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure[TOptions](IServiceCollection services, Action`1 configureOptions)
+   at Microsoft.Extensions.DependencyInjection.CorsServiceCollectionExtensions.AddCors(IServiceCollection services, Action`1 setupAction)
+   at Program.<Main>$(String[] args) in D:\ProjectAngularApi\server\ChineseSaleApi\Program.cs:line 160
+2026-01-29 22:18:30.765 +02:00 [INF] Starting Store API application {}
+2026-01-29 22:18:31.336 +02:00 [INF] Store API is now running {}

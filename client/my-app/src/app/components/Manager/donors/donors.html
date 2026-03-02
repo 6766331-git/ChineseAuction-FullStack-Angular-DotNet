@@ -1,0 +1,159 @@
+<div class="page-wrapper">
+  <p-toast key="donorToast" position="top-center"></p-toast>
+  <p-confirmDialog></p-confirmDialog>
+
+  <div class="page-header">
+    <div class="title-section">
+      <h1>Donor Management</h1>
+      <p>Manage donors and track gifts in the system</p>
+    </div>
+    <button class="primary-btn" (click)="openNewDonorModal()">
+      <span class="icon">+</span> Add New Donor
+    </button>
+  </div>
+
+  <div class="card filter-card">
+    <form [formGroup]="filterForm" (ngSubmit)="filterDonors()" class="filter-form">
+      <div class="input-group">
+        <label>Donor Name</label>
+        <input type="text" formControlName="name" placeholder="Search by name...">
+      </div>
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" formControlName="email" placeholder="Search by email...">
+      </div>
+
+<div class="input-group">
+  <label>Gift</label>
+  <select formControlName="giftId">
+    <option [ngValue]="null">All Gifts</option>
+    <option *ngFor="let gift of giftsList" [value]="gift.id">
+      {{ gift.name }}
+    </option>
+  </select>
+</div>
+
+      <div class="actions">
+        <button class="primary-btn" type="submit">Search</button>
+        <button class="secondary-btn" type="button" (click)="resetFilter()">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Email Address</th>
+          <th class="text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let donor of donors$ | async">
+          <td>
+            <div class="donor-name">{{ donor.name }}</div>
+          </td>
+          <td>{{ donor.email }}</td>
+          <td class="text-right">
+            <div class="action-buttons">
+              <button class="icon-btn gift" title="View Gifts" (click)="loadGifts(donor.id, donor.name)">🎁</button>
+              <button class="icon-btn edit" title="Edit" (click)="editDonor(donor)">✏️</button>
+              <button class="icon-btn delete" title="Delete" (click)="deleteDonor(donor.id)">🗑</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="(donors$ | async)?.length === 0" class="empty-table">
+      No donors found matching your search.
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>{{ selectedDonorId ? 'Update Donor' : 'Add New Donor' }}</h2>
+      <button class="close-btn" (click)="closeModal()">✖</button>
+    </div>
+
+    <form [formGroup]="donorForm" (ngSubmit)="submit()">
+      <div class="modal-body">
+
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" formControlName="name" placeholder="Enter full name"
+            [class.invalid]="donorForm.get('name')?.invalid && donorForm.get('name')?.touched">
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" formControlName="email" placeholder="Enter email address"
+            [class.invalid]="donorForm.get('email')?.invalid && donorForm.get('email')?.touched">
+
+          <!-- ✅ VALIDATION MESSAGE -->
+          <small *ngIf="donorForm.get('email')?.invalid && donorForm.get('email')?.touched" style="color: #e74c3c">
+            Please enter a valid email address
+          </small>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="secondary-btn" type="button" (click)="closeModal()">Cancel</button>
+        <button class="primary-btn" type="submit" [disabled]="donorForm.invalid">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="drawer-overlay" [class.open]="isGiftsOpen" (click)="closeGifts()"></div>
+
+<div class="drawer" [class.open]="isGiftsOpen">
+  <div class="drawer-header">
+    <h3>Gifts for: {{ selectedDonorName }}</h3>
+    <button class="close-btn" (click)="closeGifts()">✖</button>
+  </div>
+
+  <div class="drawer-body">
+    <ng-container *ngIf="(gifts$ | async) as donorGifts; else loading">
+      <div *ngIf="donorGifts.length > 0; else noGifts">
+        <div class="gift-card" *ngFor="let gift of donorGifts">
+          <div class="gift-image" *ngIf="gift.pictureUrl">
+            <img [src]="'http://localhost:5000/' + gift.pictureUrl" alt="Gift">
+          </div>
+
+          <div class="gift-details">
+            <h4>{{ gift.name }}</h4>
+            <p class="desc">{{ gift.description }}</p>
+
+            <div class="meta">
+              <span class="badge">{{ gift.category?.name }}</span>
+            </div>
+
+            <div class="meta">
+              <span class="price">₪{{ gift.ticketCost }}</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <ng-template #noGifts>
+        <div class="empty-state">
+          <div class="icon">🎁</div>
+          <p>No gifts available for this donor.</p>
+        </div>
+      </ng-template>
+    </ng-container>
+
+    <ng-template #loading>
+      <div class="loading-container">
+        <div class="spinner"></div>
+        <p>Loading gifts...</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

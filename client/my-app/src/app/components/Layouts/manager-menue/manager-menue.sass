@@ -1,0 +1,80 @@
+$lemon: #f0ea78ff
+$dark: #2d3436
+$white: #ffffff
+$danger: #ff4757
+
+.manager-header
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 0 2rem
+  height: 80px
+  background: $white
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05)
+  position: sticky
+  top: 0
+  z-index: 1000
+  overflow: hidden 
+
+  .logo-container
+    display: flex
+    align-items: center
+    gap: 12px
+    cursor: pointer
+    height: 100%
+    
+    .logo-img
+      height: 60px 
+      width: auto
+      object-fit: contain
+      margin: 0 
+      transition: transform 0.2s
+
+    .logo-text
+      font-size: 1.3rem
+      font-weight: 800
+      color: $dark
+
+    &:hover .logo-img
+      transform: scale(1.05)
+
+  .menu
+    display: flex
+    list-style: none
+    gap: 10px
+    margin: 0
+    padding: 0
+
+    li
+      font-weight: 700
+      padding: 8px 18px
+      border-radius: 8px
+      cursor: pointer
+      transition: 0.2s
+      color: $dark
+      
+      &:hover
+        background: rgba($lemon, 0.2)
+
+      &.active
+        background: $lemon
+
+  .header-actions
+    display: flex
+    align-items: center
+    gap: 1.5rem
+
+    .logout-btn
+      background: #f5f5f5
+      border: 1px solid #ddd
+      color: $dark
+      padding: 8px 16px
+      border-radius: 6px
+      font-weight: 600
+      cursor: pointer
+      transition: all 0.2s
+
+      &:hover
+        background: $danger
+        color: white
+        border-color: $danger

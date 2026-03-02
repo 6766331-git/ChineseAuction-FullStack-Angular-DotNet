@@ -1,0 +1,116 @@
+<!-- PAGE HEADER -->
+ <p-confirmDialog></p-confirmDialog>
+
+<div class="flex flex-column gap-4 mb-5">
+  <div class="flex justify-content-between align-items-end flex-wrap gap-3">
+
+    <!-- Title -->
+    <div>
+      <h1 class="m-0 text-primary-900" style="font-size:2.5rem; font-weight:800;">
+        Categories Portal
+      </h1>
+      <p class="text-gray-500 m-0">Manage your gift categories</p>
+    </div>
+
+    <!-- Add inline -->
+    <div class="flex gap-2 flex-wrap justify-content-end align-items-center">
+      <span class="p-input-icon-left border-round-xl overflow-hidden shadow-1 flex align-items-center"
+            style="background: var(--surface-card); padding:0.25rem 0.5rem;">
+        <i class="pi pi-tag text-primary-600"></i>
+        <input pInputText placeholder="Category name..." class="w-16rem border-none"
+               style="box-shadow:none; outline:none;" [(ngModel)]="newCategoryName" name="newCategoryName"
+               (keydown.enter)="addNewCategory()" />
+      </span>
+
+      <button pButton label="Add" icon="pi pi-plus" class="p-button-warning border-round-2xl shadow-3"
+              style="font-weight:700;" [disabled]="!newCategoryName || newCategoryName.trim().length === 0"
+              (click)="addNewCategory()">
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<p-toast position="top-center"></p-toast>
+
+<!-- LOADING -->
+@if (loading) {
+  <div class="flex justify-content-center align-items-center mt-6 gap-3">
+    <p-progressSpinner></p-progressSpinner>
+    <span class="text-lg font-medium text-gray-600">Loading categories...</span>
+  </div>
+}
+
+<!-- CARDS -->
+<ng-container *ngIf="categories$ | async as categories">
+
+  <ng-container *ngIf="categories.length === 0; else cardsTpl">
+    <div class="flex flex-column align-items-center justify-content-center gap-2 text-gray-500"
+         style="min-height:14rem;border:1px dashed rgba(0,0,0,.12);border-radius:18px;background:rgba(255,235,59,.06);">
+      <div class="flex align-items-center justify-content-center bg-primary-100 border-round-lg"
+           style="width:54px;height:54px;border:1px solid rgba(255,235,59,.35);">
+        <i class="pi pi-folder-open text-primary-700 text-xl"></i>
+      </div>
+      <span class="font-bold text-gray-800" style="font-size:1.1rem;">No categories yet</span>
+      <span class="text-gray-500">Type a name and click “Add”.</span>
+    </div>
+  </ng-container>
+
+  <!-- GRID -->
+  <ng-template #cardsTpl>
+    <div class="mt-3" style="
+        display:grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+      ">
+      <div *ngFor="let c of categories" class="hover:bg-primary-50 transition-all transition-duration-200"
+           style="border:1px solid rgba(0,0,0,.06);border-radius:18px;background:#fff;box-shadow:0 10px 22px rgba(0,0,0,.06);overflow:hidden;padding:1.5rem;">
+
+        <!-- TOP -->
+        <div>
+          <div class="flex align-items-center gap-4">
+            <div class="flex align-items-center justify-content-center bg-primary-100 border-round-lg"
+                 style="width:55px;height:55px">
+              <i class="pi pi-tag text-primary-700 text-xl"></i>
+            </div>
+
+            <div class="flex flex-column">
+              <span class="font-bold text-gray-900 text-lg">{{ c.name }}</span>
+              <span class="text-gray-500 text-sm">Category</span>
+            </div>
+          </div>
+
+          <div class="mt-4 flex align-items-center justify-content-between">
+            <span class="text-gray-800 font-bold"
+                  style="padding:.4rem .8rem;border-radius:999px;font-size:.85rem;background: rgba(255,235,59,.22);border:1px solid rgba(255,235,59,.35);">
+              Active
+            </span>
+
+            <span class="text-gray-400 text-sm">#{{ c.id }}</span>
+          </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="flex justify-content-end gap-3 mt-3">
+          <ng-container *ngIf="editingCategoryId !== c.id; else editTpl">
+            <button pButton label="Edit" icon="pi pi-pencil"
+                    class="p-button-outlined p-button-warning border-round-xl"
+                    (click)="startEdit(c)"></button>
+
+            <button pButton label="Delete" icon="pi pi-trash" class="p-button-outlined border-round-xl"
+                    style="border-color: rgba(239,68,68,.35); color:#ef4444;"
+                    (click)="onDeleteCategory(c)"></button>
+          </ng-container>
+
+          <ng-template #editTpl>
+            <input pInputText [(ngModel)]="editingCategoryName" style="width:140px;" />
+            <button pButton label="Save" icon="pi pi-check" class="p-button-success" (click)="saveEdit(c)"></button>
+            <button pButton label="Cancel" icon="pi pi-times" class="p-button-secondary" (click)="cancelEdit()"></button>
+          </ng-template>
+        </div>
+
+      </div>
+    </div>
+  </ng-template>
+
+</ng-container>

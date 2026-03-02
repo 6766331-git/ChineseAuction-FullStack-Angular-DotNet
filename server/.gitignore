@@ -1,0 +1,31 @@
+# --- .NET Build Outputs ---
+bin/
+obj/
+
+# --- IDE Settings (Visual Studio / VS Code) ---
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+
+# --- Secrets & Local Config ---
+# מחריגים את קובץ ההגדרות המקומי כדי שסיסמאות ה-DB לא יעלו
+appsettings.Development.json
+
+# --- Logs ---
+# מתעלמים מכל קבצי הטקסט בתיקיית הלוגים שראינו בסריקה
+server/ChineseSaleApi/Logs/
+*.log
+
+# --- Packages ---
+*.nupkg
+
+# --- Images Handling ---
+# 1. קודם כל, נגיד לגיט להתעלם מכל מה שנמצא בתיקיית התמונות בשרת
+server/ChineseSaleApi/wwwroot/images/*
+
+# 2. עכשיו, נחריג מההתעלמות (כלומר נאפשר) רק את 3 התמונות של ה-Seed
+!server/ChineseSaleApi/wwwroot/images/10.jpg
+!server/ChineseSaleApi/wwwroot/images/12.jpg
+!server/ChineseSaleApi/wwwroot/images/13.jpg

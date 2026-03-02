@@ -1,0 +1,134 @@
+<p-toast></p-toast>
+
+<div class="card shadow-2 border-round-xl p-4">
+  <div class="flex justify-content-between align-items-center mb-4">
+    <h2 class="text-2xl font-bold m-0 text-primary">
+      Purchases Management
+    </h2>
+    
+    <div class="flex gap-2">
+      <button 
+        pButton 
+        label="דוח זוכים" 
+        icon="pi pi-file-export" 
+        class="p-button-outlined p-button-secondary"
+        (click)="generateWinnersReport()">
+      </button>
+      
+      <button 
+        pButton 
+        label="סיכום הכנסות" 
+        icon="pi pi-chart-line" 
+        class="p-button-outlined p-button-success"
+        (click)="generateRevenueReport()">
+      </button>
+    </div>
+  </div>
+
+  <p-table
+    [value]="(purchases$ | async)!"
+    [paginator]="true"
+    [rows]="10"
+    styleClass="p-datatable-striped p-datatable-gridlines"
+    responsiveLayout="scroll">
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Gift</th>
+        <th class="text-center">Sold</th>
+        <th>Winner</th>
+        <th class="text-right">Actions</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-p>
+      <tr>
+        <td>
+          <span class="font-bold text-lg">{{ p.giftName }}</span>
+        </td>
+
+        <td class="text-center">
+          <span class="text-2xl font-bold">{{ p.quantity }}</span>
+        </td>
+
+        <td>
+          <p-tag
+            *ngIf="p.winnerName !== 'No winner yet'"
+            severity="success"
+            icon="pi pi-trophy"
+            [value]="p.winnerName">
+          </p-tag>
+
+          <span *ngIf="p.winnerName === 'No winner yet'" class="text-gray-400 italic">
+            No winner yet
+          </span>
+        </td>
+
+        <td class="text-right">
+          <div class="flex gap-2 justify-content-end">
+            <button
+              pButton
+              label="Buyers"
+              icon="pi pi-users"
+              class="p-button-text"
+              (click)="onShowPurchaseDetails(p)">
+            </button>
+
+            <button
+              pButton
+              label="Lottery"
+              icon="pi pi-bolt"
+              class="p-button-warning"
+              [loading]="loadingLottery"
+              [disabled]="p.winnerName !== 'No winner yet'"
+              (click)="onDrawWinner(p)">
+            </button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-dialog
+  header="Buyers Details"
+  [(visible)]="displayDialog"
+  [modal]="true"
+  [style]="{ width: '60vw' }"
+  [baseZIndex]="10000">
+
+  <div *ngIf="loadingBuyers" class="flex justify-content-center p-5">
+    <p-progressSpinner styleClass="text-primary"></p-progressSpinner>
+  </div>
+
+  <p-table
+    *ngIf="!loadingBuyers && selectedBuyers.length > 0"
+    [value]="selectedBuyers"
+    styleClass="p-datatable-striped p-datatable-gridlines p-datatable-sm"
+    [responsiveLayout]="'scroll'">
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Purchase Date</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-buyer>
+      <tr>
+        <td>{{ buyer.user?.userName }}</td>
+        <td>{{ buyer.user?.name }}</td>
+        <td>{{ buyer.user?.phone }}</td>
+        <td>{{ buyer.purchaseDate | date:'dd/MM/yyyy HH:mm' }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <div
+    *ngIf="!loadingBuyers && selectedBuyers.length === 0"
+    class="text-center p-4 text-gray-500 italic">
+    No buyers found for this gift.
+  </div>
+</p-dialog>
